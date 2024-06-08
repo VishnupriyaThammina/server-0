@@ -7,10 +7,9 @@ const Schema = mongoose.Schema;
 
 const WislistSchema = new Schema({
     pid:{
-type:Schema.Types.ObjectId,
-ref:'Products',
-required:true
-    },
+        type:String,
+        required:true
+            },
     count:{
         type: Number,
         required: true

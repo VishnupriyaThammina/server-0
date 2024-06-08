@@ -6,6 +6,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ProductsSchema = new Schema({
+pid:{
+    type:String,
+    immutable:true,// cant be changed 
+    unique:true,
+    required:true
+},
   name: {
     type: String,
     required: true,
@@ -18,10 +24,13 @@ const ProductsSchema = new Schema({
     type: String,
     required: true,
   },
+  thumbnail:{
+    type:String,
+    required:true
+  },
   images: [
     {
       type: String,
-      required: true,
     },
   ],
 });

@@ -7,8 +7,7 @@ const Schema = mongoose.Schema;
 
 const CartSchema = new Schema({
     pid:{
-type:Schema.Types.ObjectId,
-ref:'Products',
+type:String,
 required:true
     },
     count:{
