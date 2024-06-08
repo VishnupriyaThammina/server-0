@@ -10,7 +10,7 @@
 
 **Step 1: Create a folder open in vs code**
 
-![Untitled](Node%20app%20set%20up%20%5B%20ecom%20%5D%205e70c248a92348d28a2fad30a09475c8/Untitled.png)
+![Untitled](./readme/readme-img/Untitled.png)
 
 ```jsx
 npm init
@@ -18,9 +18,9 @@ npm install
 npm i express
 ```
 
-![Untitled](Node%20app%20set%20up%20%5B%20ecom%20%5D%205e70c248a92348d28a2fad30a09475c8/Untitled%201.png)
+![Untitled](./readme/readme-img/Untitled%201.png)
 
-![Untitled](Node%20app%20set%20up%20%5B%20ecom%20%5D%205e70c248a92348d28a2fad30a09475c8/Untitled%202.png)
+![Untitled](./readme/readme-img/Untitled%202.png)
 
 | Folder name | description |
 | --- | --- |
@@ -79,7 +79,7 @@ npm i mongoose
     - **Map**: A flexible data structure to store key-value pairs.
     - **Embedded Documents**: Documents within documents (subdocuments).
     
-    ![Untitled](Node%20app%20set%20up%20%5B%20ecom%20%5D%205e70c248a92348d28a2fad30a09475c8/Untitled%203.png)
+    ![Untitled](./readme/readme-img/Untitled%203.png)
     
     - Made all data-related modules
 - **Step 3 : DB connection**
@@ -105,7 +105,7 @@ app.listen(port, () => {
 
 ```
 
-![Untitled](Node%20app%20set%20up%20%5B%20ecom%20%5D%205e70c248a92348d28a2fad30a09475c8/Untitled%204.png)
+![Untitled](./readme/readme-img/Untitled%204.png)
 
 What is a controller: 
 
