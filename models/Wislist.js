@@ -1,0 +1,28 @@
+const mongoose = require('mongoose');
+// require mongoose 
+
+// schema definition
+
+const Schema = mongoose.Schema;
+
+const WislistSchema = new Schema({
+    pid:{
+type:Schema.Types.ObjectId,
+ref:'Products',
+required:true
+    },
+    count:{
+        type: Number,
+        required: true
+    },
+    price:{
+        type: Number,
+        required: true
+    }
+   
+   
+});
+
+// creating and exporting the model
+const Wislist = mongoose.model('Wislist',WislistSchema)
+module.exports = Wislist
