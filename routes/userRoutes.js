@@ -21,8 +21,7 @@ const {gen,verifyToken }= require('../middlewares/jwt')
     router.post('/update-wislist-item',updateCountWislistItem)
     router.post('/delete-wislist-item',deleteWislistItem)
 
-    router.post('/gen',gen)
-    router.post('/ver',verifyToken,CheckUser)
+  
 
 
 
