@@ -11,6 +11,9 @@ if(!product){
     return res.status(409).json({message:"product invalid"})
 }
 // create a cart item with an id 
+const checkUser = await User.findOne({username:req.body.username})
+// as now we have the details of the user
+
 const cartItem = new Cart({
     pid: req.body.pid,
     count: req.body.count,
