@@ -5,9 +5,10 @@
     // we need express router here so we are requiring express here
     const router = express.Router();
     // import controller function
-    const {AddUser,AllUsers,EditUser,DeleteUser}= require('../controllers/userController');
+    const {AddUser,AllUsers,EditUser,DeleteUser, CheckUser}= require('../controllers/userController');
 const { addCart,updateCountCartItem,deleteCartItem } = require('../controllers/cartController');
 const {addWislist,updateCountWislistItem,deleteWislistItem} = require('../controllers/wislistController')
+const {gen,verifyToken }= require('../middlewares/jwt')
     //second half of the entire end point
     router.post('/create-user',AddUser);
     router.get('/all-users',AllUsers);
@@ -19,6 +20,9 @@ const {addWislist,updateCountWislistItem,deleteWislistItem} = require('../contro
     router.post('/add-wislist',addWislist)
     router.post('/update-wislist-item',updateCountWislistItem)
     router.post('/delete-wislist-item',deleteWislistItem)
+
+    router.post('/gen',gen)
+    router.post('/ver',verifyToken,CheckUser)
 
 
 

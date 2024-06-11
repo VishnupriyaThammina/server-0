@@ -118,4 +118,19 @@ catch(err){
     return res.status(500).json({message:'Internal Server Error!!',error:err.message})
 }
 }
-module.exports= {AddUser,AllUsers, EditUser,DeleteUser}
+
+
+const CheckUser = async(req,res)=>{
+  try{
+
+    const user = await User.findOne({username:req.body.username})
+    if(!user){
+        return res.status(409).json({message:"User not present!"})
+    }
+  return res.status(200).json({message:"User is present in DB",uid:req.username_d,urole:req.role_d})
+}
+catch(err){
+    return res.status(500).json({message:"Internal Server Error"})
+}
+}
+module.exports= {AddUser,AllUsers, EditUser,DeleteUser, CheckUser}

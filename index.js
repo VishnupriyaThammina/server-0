@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const app = express();
 const port = 3030;
 const bodyparser = require('body-parser');
+require('dotenv').config();
+
 mongoose.connect('mongodb+srv://vishnupriyat20:vish@cluster0.mgnwtzl.mongodb.net/').then(() => {
   console.log('Connected to MongoDB');
 }).catch(err => {
