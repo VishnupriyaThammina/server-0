@@ -113,3 +113,7 @@ What is a controller:
 
 - **Writing a Controller:**
 - if res.status line is encountered it is like the return statement of a controller function
+
+## Setting up JWT Auth token generation in my backend
+
+- Step 1 : Install JWT package
