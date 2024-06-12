@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const BlacklistedTokenSchema = new Schema({
-    tid:{
+    token:{
 type:String,
 required:true
     },

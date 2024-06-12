@@ -8,9 +8,7 @@
     const {AddUser,AllUsers,EditUser,DeleteUser, CheckUser}= require('../controllers/userController');
 const { addCart,updateCountCartItem,deleteCartItem } = require('../controllers/cartController');
 const {addWislist,updateCountWislistItem,deleteWislistItem} = require('../controllers/wislistController')
-const {gen,verifyToken }= require('../middlewares/jwt')
     //second half of the entire end point
-    router.post('/create-user',AddUser);
     router.get('/all-users',AllUsers);
     router.post('/edit-user',EditUser);
     router.post('/delete-user',DeleteUser);
@@ -20,12 +18,6 @@ const {gen,verifyToken }= require('../middlewares/jwt')
     router.post('/add-wislist',addWislist)
     router.post('/update-wislist-item',updateCountWislistItem)
     router.post('/delete-wislist-item',deleteWislistItem)
-
-  
-
-
-
-
 
 
     module.exports=router;

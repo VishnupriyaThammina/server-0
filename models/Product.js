@@ -16,6 +16,14 @@ pid:{
     type: String,
     required: true,
   },
+  catergory:{
+    type:String,
+    required:true,
+  },
+  stock:{
+    type:Number,
+    required:true,
+  },
   price: {
     type: Number,
     required: true,

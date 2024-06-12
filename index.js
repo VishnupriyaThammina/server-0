@@ -14,13 +14,15 @@ mongoose.connect('mongodb+srv://vishnupriyat20:vish@cluster0.mgnwtzl.mongodb.net
 // importing routes
 const productRoutes = require('./routes/productRoutes')
 const userRoutes = require('./routes/userRoutes')
-
+const authRoutes = require('./routes/authRoutes')
+const {verifyToken} = require('./middlewares/jwt')
 
 // requesst body data is recieved from the application in the form of json 
 // body parser get you the req body data
 app.use(bodyparser.json());
-app.use('/product',productRoutes);
-app.use('/user',userRoutes);
+app.use('/auth',authRoutes);
+app.use('/product',verifyToken,productRoutes);
+app.use('/user',verifyToken,userRoutes);
 
 // Connect to MongoDB
 

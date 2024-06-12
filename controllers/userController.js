@@ -1,11 +1,13 @@
 const User = require('../models/User.js');
+
+// a reusable add user function
 const AddUser = async(req,res)=>{
     try{
         // Creating the User 
         const existsUser = await User.findOne({username:req.body.username})
         if(existsUser){
             console.log('User already exists')
-           return res.status(409).json({message:"User all ready exists in database"})
+           return 0;
             // 409 represents conflict in current request body User id 
         }
         const newUser = new User({
@@ -22,14 +24,16 @@ const AddUser = async(req,res)=>{
         await newUser.save();
         console.log('User added successfully')
         // sending response back and ending execution of the function
-       return res.status(200).json({message:'successfully saved data to database',User:newUser})
+       return newUser;
 
     }catch(error){
         console.log('internal server error incurred while adding a User')
 
-        return res.status(500).json({message:'Internal Server Error!!',error:error.message})
+        return 0;
     }
 }
+
+
 // fetch all Users
 const AllUsers = async(req,res)=>{
     try{

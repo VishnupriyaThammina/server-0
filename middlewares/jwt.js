@@ -2,7 +2,7 @@ const jwt= require('jsonwebtoken')
 
 const JWT_SECRET = process.env.JWT_SECRET
 
-const generateToken=(req)=>{
+const gen=(req)=>{
 token = jwt.sign({
     // field which needs to be used in token
     username:req.body.username,
@@ -15,18 +15,7 @@ JWT_SECRET,
 return token;
 }
 
-const gen = async(req,res)=>{
-    try{
-token =  generateToken(req)
-if(!token)
-    {
-        return res.status(409).json({message:"error in details used in token gen"})
-    }
-    return res.status(200).json({token:token, message:"Token generation successfull"})
-    }catch(err){
-        return res.status(500).json({message:"error in gen token from server end"})
-    }
-}
+
 
 const verifyToken = (req,res,next)=>{
     // get the token from bearer auth header
