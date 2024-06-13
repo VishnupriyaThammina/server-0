@@ -14,11 +14,12 @@ const isAdmin = async(req,res,next)=>{
 
 // end points user or admin can access 
 
-const userORAdminAccess = async(req,res,next)=>{
+const userAdminAccess = async(req,res,next)=>{
     const user = await User.findOne({username:req.username_d})
     if(!user || (user.role!== 'admin' && user.role!=='user')){
         return res.status(403).json({message:"you dont have access"})
     }
+    req.user = user;
     next();
 }
 

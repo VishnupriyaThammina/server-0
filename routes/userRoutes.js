@@ -6,8 +6,8 @@
     const router = express.Router();
     // import controller function
     const {AddUser,AllUsers,EditUser,DeleteUser, CheckUser}= require('../controllers/userController');
-const { addCart,updateCountCartItem,deleteCartItem } = require('../controllers/cartController');
-const {addWislist,updateCountWislistItem,deleteWislistItem} = require('../controllers/wislistController')
+const { addCart,updateCountCartItem,deleteCartItem,getCartItems } = require('../controllers/cartController');
+const {addWislist,updateCountWislistItem,deleteWislistItem,getWislistItems} = require('../controllers/wislistController')
 const {isAdmin,userAdminAccess} = require('../utils/accesscontrol')
    
 //second half of the entire end point
@@ -17,13 +17,12 @@ const {isAdmin,userAdminAccess} = require('../utils/accesscontrol')
     router.post('/delete-user',userAdminAccess,DeleteUser);
     router.post('/add-cart',userAdminAccess,addCart)
     router.post('/update-cart-item',userAdminAccess,updateCountCartItem)
+    router.post('/get-cart-items',userAdminAccess,getCartItems)
+    router.post('/get-wishlist-items',userAdminAccess,getWislistItems)
+
     router.post('/delete-cart-item',userAdminAccess,deleteCartItem)
     router.post('/add-wislist',userAdminAccess,addWislist)
-    router.post('/update-wislist-item',userAdminAccess,updateCountWislistItem)
     router.post('/delete-wislist-item',userAdminAccess,deleteWislistItem)
-
     // after verifying the token we are chekcing if the user has access to the route
-
-
     module.exports=router;
 

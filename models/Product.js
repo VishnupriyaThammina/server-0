@@ -16,7 +16,7 @@ pid:{
     type: String,
     required: true,
   },
-  catergory:{
+  category:{
     type:String,
     required:true,
   },
