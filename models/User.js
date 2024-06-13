@@ -35,6 +35,12 @@ const UsersSchema = new Schema({
       ref: "Wislist",
     },
   ],
+  orders: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Order",
+    },
+  ],
 });
 
 // creating and exporting the model
