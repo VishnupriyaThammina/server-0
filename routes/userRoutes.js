@@ -8,16 +8,21 @@
     const {AddUser,AllUsers,EditUser,DeleteUser, CheckUser}= require('../controllers/userController');
 const { addCart,updateCountCartItem,deleteCartItem } = require('../controllers/cartController');
 const {addWislist,updateCountWislistItem,deleteWislistItem} = require('../controllers/wislistController')
-    //second half of the entire end point
-    router.get('/all-users',AllUsers);
-    router.post('/edit-user',EditUser);
-    router.post('/delete-user',DeleteUser);
-    router.post('/add-cart',addCart)
-    router.post('/update-cart-item',updateCountCartItem)
-    router.post('/delete-cart-item',deleteCartItem)
-    router.post('/add-wislist',addWislist)
-    router.post('/update-wislist-item',updateCountWislistItem)
-    router.post('/delete-wislist-item',deleteWislistItem)
+const {isAdmin,userAdminAccess} = require('../utils/accesscontrol')
+   
+//second half of the entire end point
+
+    router.get('/all-users',isAdmin,AllUsers);
+    router.post('/edit-user',userAdminAccess,EditUser);
+    router.post('/delete-user',userAdminAccess,DeleteUser);
+    router.post('/add-cart',userAdminAccess,addCart)
+    router.post('/update-cart-item',userAdminAccess,updateCountCartItem)
+    router.post('/delete-cart-item',userAdminAccess,deleteCartItem)
+    router.post('/add-wislist',userAdminAccess,addWislist)
+    router.post('/update-wislist-item',userAdminAccess,updateCountWislistItem)
+    router.post('/delete-wislist-item',userAdminAccess,deleteWislistItem)
+
+    // after verifying the token we are chekcing if the user has access to the route
 
 
     module.exports=router;

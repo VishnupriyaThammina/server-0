@@ -20,7 +20,7 @@ const WislistItem = new Wislist({
 // push this new item's to user Wislist array
 await WislistItem.save();
 const user = await User.findOneAndUpdate(
-   {username: req.body.username},
+   {username: req.username_d},
     {$push:{wislist:WislistItem._id}},
     {new:true}
 ).populate('wislist')
@@ -47,7 +47,7 @@ const updateCountWislistItem = async(req,res)=>{
         {new:true}
       )
  // Find the user and populate the updated Wislist
- const user = await User.findOne({ username: req.body.username }).populate('wislist');
+ const user = await User.findOne({ username: req.username_d }).populate('wislist');
  return res.status(200).json({ user: user, message: "Wislist item count updated" });
        }catch(error){
                 console.log('internal server error incurred while adding a User')
@@ -64,7 +64,7 @@ const deleteWislistItem = async(req,res)=>{
         }
       const deleteWislistItem = await Wislist.findByIdAndDelete(  {_id:WislistItem._id}, )
  // Find the user and populate the updated Wislist
- const user = await User.findOne({ username: req.body.username }).populate('wislist');
+ const user = await User.findOne({ username: req.username_d }).populate('wislist');
  return res.status(200).json({ user: user, message: "Wislist item count updated" });
        }catch(error){
                 console.log('internal server error incurred while adding a User')

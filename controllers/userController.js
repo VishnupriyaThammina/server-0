@@ -4,12 +4,13 @@ const User = require('../models/User.js');
 const AddUser = async(req,res)=>{
     try{
         // Creating the User 
-        const existsUser = await User.findOne({username:req.body.username})
-        if(existsUser){
+        const existsUser = await User.findOne({username:req.username_d})
+        if(existsUser ){
             console.log('User already exists')
            return 0;
             // 409 represents conflict in current request body User id 
         }
+        
         const newUser = new User({
             username: req.body.username,
             email : req.body.email,
@@ -37,8 +38,10 @@ const AddUser = async(req,res)=>{
 // fetch all Users
 const AllUsers = async(req,res)=>{
     try{
+
+      
         const Users = await User.find({}, { email: 1, username: 1,role:1,_id:0 });
-        res.status(200).json({Users:Users,message:"Fetched all Users information"})
+        return res.status(200).json({Users:Users,message:"Fetched all Users information"})
     }catch(err){
         console.log('internal server error incurred while adding a User')
         return res.status(500).json({message:'Internal Server Error!!',error:err.message})
@@ -55,14 +58,14 @@ const EditUser = async(req,res)=>{
 // 1st we have to check if the prod id valid
 // if so
 // just update
-const existsUser = await User.findOne({username:req.body.username})
+const existsUser = await User.findOne({username:req.username_d})
 if(!existsUser){
     console.log('User is not present ')
    return res.status(409).json({message:"User is not present in database"})
     // 409 represents conflict in current request body User id 
 }
 
-const username = req.body.username;
+const username = req.username_d;
 // as the User id exists 
 const updateFields = {};
 const checkpassword = await User.findOne({username:username})// filter object is expected 
@@ -77,7 +80,7 @@ if(checkpassword.password==req.body.password){
     
     if (req.body.newpassword) {
     
-        updateFields.newpassword = req.body.newpassword;
+        updateFields.password = req.body.newpassword;
     }
 
     
@@ -102,14 +105,14 @@ const DeleteUser = async(req,res)=>{
 // 1st we have to check if the prod id valid
 // if so
 // just update
-const existsUser = await User.findOne({username:req.body.username})
+const existsUser = await User.findOne({username:req.username_d})
 if(!existsUser){
     console.log('User is not present ')
    return res.status(409).json({message:"User is not present in database"})
     // 409 represents conflict in current request body User id 
 }
 if(existsUser.password==req.body.password){
-    await User.findOneAndDelete({username:req.body.username})
+    await User.findOneAndDelete({username:req.username_d})
     console.log('User deleted from warehouse')
     return res.status(200).json({message:"User successfully deleted"})
 }
@@ -127,7 +130,7 @@ catch(err){
 const CheckUser = async(req,res)=>{
   try{
 
-    const user = await User.findOne({username:req.body.username})
+    const user = await User.findOne({username:req.username_d})
     if(!user){
         return res.status(409).json({message:"User not present!"})
     }

@@ -11,7 +11,7 @@ if(!product){
     return res.status(409).json({message:"product invalid"})
 }
 // create a cart item with an id 
-const checkUser = await User.findOne({username:req.body.username})
+const checkUser = await User.findOne({username:req.username_d})
 // as now we have the details of the user
 
 const cartItem = new Cart({
@@ -22,7 +22,7 @@ const cartItem = new Cart({
 // push this new item's to user cart array
 await cartItem.save();
 const user = await User.findOneAndUpdate(
-   {username: req.body.username},
+   {username: req.username_d},
     {$push:{cart:cartItem._id}},
     {new:true}
 ).populate('cart')
@@ -49,7 +49,7 @@ const updateCountCartItem = async(req,res)=>{
         {new:true}
       )
  // Find the user and populate the updated cart
- const user = await User.findOne({ username: req.body.username }).populate('cart');
+ const user = await User.findOne({ username: req.username_d }).populate('cart');
  return res.status(200).json({ user: user, message: "Cart item count updated" });
        }catch(error){
                 console.log('internal server error incurred while adding a User')
@@ -66,7 +66,7 @@ const deleteCartItem = async(req,res)=>{
         }
       const deleteCartItem = await Cart.findByIdAndDelete(  {_id:cartItem._id}, )
  // Find the user and populate the updated cart
- const user = await User.findOne({ username: req.body.username }).populate('cart');
+ const user = await User.findOne({ username: req.username_d }).populate('cart');
  return res.status(200).json({ user: user, message: "Cart item count updated" });
        }catch(error){
                 console.log('internal server error incurred while adding a User')

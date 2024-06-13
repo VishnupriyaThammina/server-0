@@ -9,7 +9,7 @@ token = jwt.sign({
     role:req.body.role
 }, 
 JWT_SECRET,
-{expiresIn:'24h'}
+{expiresIn:'1h'}
 )
 
 return token;

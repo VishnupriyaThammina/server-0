@@ -6,12 +6,12 @@
     const router = express.Router();
     // import controller function
     const {AddProduct,AllProducts,EditProduct,DeleteProduct}= require('../controllers/productController')
-
+    const {isAdmin} = require('../utils/accesscontrol')
     //second half of the entire end point
-    router.post('/create-product',AddProduct);
-    router.get('/all-products',AllProducts);
-    router.post('/edit-product',EditProduct);
-    router.post('/delete-product',DeleteProduct);
+    router.post('/create-product',isAdmin,AddProduct);
+    router.get('/all-products',isAdmin,AllProducts);
+    router.post('/edit-product',isAdmin,EditProduct);
+    router.post('/delete-product',isAdmin,DeleteProduct);
 
 
 
